@@ -1,27 +1,77 @@
-This is a simple babel plugin to inline CSS and LESS styles into JS vis JSS.
+# babel-plugin-import-css-to-radium
 
-This plugin is very much experimental due to use of the Babel6 API - largely undocumented. Contributions are welcome.
+inline CSS, SASS, and LESS files into Radium style objects,
 
-# Usage
+_**Note:** This Babel plugin works works with Babel 6**._
 
-The following command will convert everything in the `src` folder to `lib` using babel and our plugin.
+### Installation
 
-    babel src/ -d lib/ --presets stage-0,es2015,react --plugins import-css-to-jss
+```sh
+$ npm install babel-plugin-import-css-to-radium
+```
 
-Every js file that has a statement such as:
+### Usage
+css, sass or less file would look like this
 
+#### styles.css
+
+```css
+
+.header {
+  background-color: green;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+```
+#### MyComponent.js
 ```javascript
-import styles from './styles.css'
+import styles from './styles.css';
+
+@Radium
+class MyComponent extends React.Component {
+
+render(){
+  return (
+    <div>
+      <h3 style={styles['.header']}></h3>
+    </div>
+    )
+}
+
+}
+
 ```
 
 will be roughtly translated to:
 
 ```javascript
 var styles = {
-    // the css file converted to JSS
+  '.header': {
+      'fontSize': 14,
+      'marginBottom': 12,
+      'backgroundColor': 'green'
+  }
+
 }
 ```
 
-# Use Cases
+### Use Case
+in a project that styling is done with css, sass, or less can be compiled into a inline javascript object so you have the benefits of having modular styles and easier portability, not all css works inline so we use a Radium decorator to serve like a polyfill for css features
 
-The only use case of this plugin is to be able to bundle CSS styles with your JS components. It is good for portability.
+### Webpack config
+config your styles to be loaded with [radium-loader](https://github.com/dminkovsky/radium-loader)
+
+### Via `.babelrc` (Recommended)
+
+**.babelrc**
+
+```json
+{
+  "plugins": [
+    ["babel-plugin-import-css-to-radium"],
+    ["babel-plugin-transform-decorators-legacy"],
+
+  ]
+}
+```

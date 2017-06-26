@@ -109,7 +109,7 @@ module.exports = function(babel) {
               path.resolve(file.file.opts.filename)
             );
             var id = t.identifier(node.specifiers[0].local.name);
-            var value = toTree(t, cssToJss({ code: lessToCss(mod.src) })); // due to bugs we cannot use t.valueToNode
+            var value = toTree(t, cssToRadium(lessToCss(mod.src))); // due to bugs we cannot use t.valueToNode
 
             decl.replaceWith(
               t.variableDeclaration('var', [t.variableDeclarator(id, value)])

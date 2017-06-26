@@ -1,7 +1,7 @@
 {
   "name": "babel-plugin-import-css-to-jss",
-  "version": "1.0.4",
-  "description": "Babel plugin to convert css imports into jss objects",
+  "version": "1.0.0",
+  "description": "Babel plugin to convert css imports into radium objects",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -20,9 +20,10 @@
     "url": "https://github.com/websecurify/babel-plugin-import-css-to-jss.git",
     "web": "https://github.com/websecurify/babel-plugin-import-css-to-jss"
   },
-  "author": "Websecurfiy <contact@websecurify.com>",
+  "author": "Olajide Ogundipe Jr",
   "license": "MIT",
   "dependencies": {
+    "css-to-radium": "^1.0.3",
     "deasync": "^0.1.4",
     "jss-cli": "^3.0.1",
     "less": "^2.5.3",

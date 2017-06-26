@@ -1,6 +1,6 @@
 {
-  "name": "babel-plugin-import-css-to-jss",
-  "version": "1.0.0",
+  "name": "babel-plugin-import-css-to-radium",
+  "version": "0.0.1",
   "description": "Babel plugin to convert css imports into radium objects",
   "main": "index.js",
   "scripts": {
@@ -17,8 +17,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/websecurify/babel-plugin-import-css-to-jss.git",
-    "web": "https://github.com/websecurify/babel-plugin-import-css-to-jss"
+    "url": "https://github.com/oojr/babel-plugin-import-css-to-radium.git",
   },
   "author": "Olajide Ogundipe Jr",
   "license": "MIT",

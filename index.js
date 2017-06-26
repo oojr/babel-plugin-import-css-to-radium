@@ -4,7 +4,6 @@ var path = require('path');
 var sass = require('node-sass');
 var deasync = require('deasync');
 var cssToRadium = require('css-to-radium');
-var cssToJss = require('jss-cli/lib/cssToJss');
 var requireResolve = require('require-resolve');
 
 function toTree(t, obj) {

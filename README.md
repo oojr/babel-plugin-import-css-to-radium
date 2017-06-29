@@ -11,7 +11,7 @@ $ npm install babel-plugin-import-css-to-radium
 ```
 
 ### Usage
-css, sass or less file would look like this
+This is a plugin that compiles css written in a modular way into Radium css style objects, so you can use them inline in a Component
 
 #### styles.css
 
@@ -26,34 +26,48 @@ css, sass or less file would look like this
 ```
 #### MyComponent.js
 ```javascript
-import styles from './styles.css';
+import removeCssDots from 'remove-css-dots';
+
+import css from './styles.css';
+
+const styles = removeCssDots(css);
 
 @Radium
 class MyComponent extends React.Component {
 
-render(){
-  return (
-    <div>
-      <h3 style={styles['.header']}></h3>
-    </div>
+  render() {
+    return (
+      <div>
+        <h3 style={css['.header']}>Cool Header</h3>
+        <h3 style={styles.header}>Cooler Header</h3>
+      </div>
     )
-}
-
+  }
 }
 
 ```
 
-will be roughtly translated to:
+css object compiles to:
 
 ```javascript
-var styles = {
-  '.header': {
-      'fontSize': 14,
-      'marginBottom': 12,
-      'backgroundColor': 'green'
-  }
-
+console.log(css)
+/*
+'.header': {
+  'fontSize': 14,
+  'marginBottom': 12,
+  'backgroundColor': 'green'
 }
+*/
+
+// make style object cleaner with remove-css-dots
+console.log(styles);
+/*
+header: {
+  'fontSize': 14,
+  'marginBottom': 12,
+  'backgroundColor': 'green'
+}
+*/
 ```
 
 ### Use Case
